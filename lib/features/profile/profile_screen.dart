@@ -27,16 +27,18 @@ class ProfileScreen extends StatelessWidget {
         FirestoreUserService(user: user);
     LocationService locationService = LocationService();
     return Scaffold(
-      backgroundColor: Colors.black26,
       appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text('Profile', style: TextStyle(color: Colors.black))),
+          title: Text('Profile',
+              style: TextStyle(
+                  color: Colors.white70,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1))),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
             Card(
-              color: ColorPallet.backgroundColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25)),
               child: Padding(
@@ -96,12 +98,7 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 20),
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CartScreen()));
-                      },
+                      onTap: () {},
                       child: Row(
                         children: [
                           Icon(Icons.person_4_outlined,
@@ -196,7 +193,7 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           Icon(Icons.location_on_outlined,
                               size: 30, color: Colors.black),
-                          Text('  Address',
+                          Text(' Update Address',
                               style:
                                   TextStyle(fontSize: 18, color: Colors.black)),
                         ],

@@ -328,3 +328,66 @@ void showAddressBottomSheet(BuildContext context, Address address) {
     },
   );
 }
+
+void showOrderConfirmationBottomSheet({
+  required BuildContext context,
+  required VoidCallback placeOrder,
+}) {
+  showModalBottomSheet(
+    context: context,
+    builder: (context) {
+      return Container(
+        padding: EdgeInsets.only(top: 20, bottom: 15, left: 15, right: 15),
+        height: MediaQuery.of(context).size.height / 5,
+        width: double.infinity,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Confirm Order?",
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      if (Navigator.of(context).canPop()) {
+                        Navigator.of(context).pop();
+                      }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.yellow.shade800,
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: placeOrder,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.yellow.shade800,
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        'Confirm',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}

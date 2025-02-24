@@ -24,7 +24,6 @@ class _WishListTileState extends State<WishListTile> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white10,
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(

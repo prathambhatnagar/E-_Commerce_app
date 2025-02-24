@@ -7,7 +7,8 @@ class AppTheme {
     borderSide: BorderSide(width: 3, color: Colors.white60),
   );
 
-  final darkThemeMode = ThemeData.dark().copyWith(
+  ThemeData darkThemeMode = ThemeData.dark().copyWith(
+    textTheme: TextTheme(headlineLarge: TextStyle()),
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: EdgeInsets.all(20),
       focusedBorder: _border.copyWith(
@@ -16,5 +17,8 @@ class AppTheme {
     ),
     appBarTheme: AppBarTheme(backgroundColor: ColorPallet.backgroundColor),
     scaffoldBackgroundColor: ColorPallet.backgroundColor,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: ColorPallet.backgroundColor),
+    cardTheme: CardTheme(color: Colors.white12),
   );
 }

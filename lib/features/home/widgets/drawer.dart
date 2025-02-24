@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/services/firebase/auth_services/user_auth_service.dart';
+import 'package:e_commerce/features/admin_pannel/admin_pannel.dart';
 import 'package:e_commerce/features/cart/screens/cart_screen.dart';
 import 'package:e_commerce/features/home/screens/home_screen.dart';
 import 'package:e_commerce/features/order_screens/screens/order_screen.dart';
@@ -80,6 +81,15 @@ class UserDrawer extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => WishListScreen()));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.security),
+              title: Text("Admin Login ?"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AdminPannel()));
               },
             ),
             ListTile(

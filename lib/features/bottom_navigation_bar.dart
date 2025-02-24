@@ -14,27 +14,27 @@ class NavigationScreen extends StatefulWidget {
 }
 
 class _NavigationScreenState extends State<NavigationScreen> {
-  List<Widget> screen = [
-    WishListScreen(),
-    CartScreen(),
-    HomeScreen(),
-    ProfileScreen(),
-    OrderScreen()
-  ];
+  late List<Widget> screen;
   @override
   void initState() {
     super.initState();
+    screen = [
+      WishListScreen(),
+      CartScreen(),
+      HomeScreen(),
+      OrderScreen(),
+      ProfileScreen(),
+    ];
   }
 
   int selectedIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorPallet.whiteColor,
       body: screen[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.black,
+        selectedItemColor: Colors.white70,
         unselectedItemColor: Colors.grey,
         selectedIconTheme: IconThemeData(size: 30, color: Colors.black),
         unselectedIconTheme: IconThemeData(size: 25, color: Colors.red),
@@ -69,7 +69,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.white70,
             icon: Icon(
               Icons.home,
               color: Colors.grey,
@@ -79,20 +78,20 @@ class _NavigationScreenState extends State<NavigationScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
+              Icons.shopping_bag_outlined,
+              color: Colors.grey,
+              size: 26,
+            ),
+            label: 'Orders',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
               Icons.person_outlined,
               color: Colors.grey,
               size: 26,
             ),
             label: 'Profile',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_bag_outlined,
-              color: Colors.grey,
-              size: 26,
-            ),
-            label: 'Orders',
-          )
         ],
       ),
     );

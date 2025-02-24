@@ -44,9 +44,9 @@ class CartScreen extends StatelessWidget {
               totalAmountNotifier: totalAmountNotifier,
               productListNotifier: productListNotifier,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             const Divider(height: 5, color: Colors.grey),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             ValueListenableBuilder<double>(
               valueListenable: totalAmountNotifier,
               builder: (context, totalAmount, child) {
@@ -59,17 +59,21 @@ class CartScreen extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             CartButton(
                 label: 'Check Out',
-                onTap: () async {
-                  List<Product> productList = productListNotifier.value;
-                  await firestoreUserService.placeOrder(productList);
-                  showOrderBottomSheet(context);
-                  await firestoreUserService.clearCart();
+                onTap: () {
+                  showOrderConfirmationBottomSheet(
+                      context: context,
+                      placeOrder: () async {
+                        List<Product> productList = productListNotifier.value;
+                        await firestoreUserService.placeOrder(productList);
+                        showOrderBottomSheet(context);
+                        await firestoreUserService.clearCart();
+                      });
                 },
-                color: Colors.grey),
-            const SizedBox(height: 20),
+                color: Colors.yellow.shade800),
+            const SizedBox(height: 10),
           ],
         ),
       ),

@@ -30,15 +30,26 @@ class OrderScreen extends StatelessWidget {
             stream: firestoreUserService.orderStream,
             builder: (context, snapshot) {
               List<Product>? productList = snapshot.data;
-              print('Order Screen Test');
 
-              print(snapshot);
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
               }
               if (!snapshot.hasData || snapshot.data!.isEmpty) {
                 return (Center(
-                    child: Text('Your haven\'t Placed any Orders Yet ')));
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/empty_box2.gif',
+                      height: 200,
+                      scale: .1,
+                    ),
+                    Text(
+                      'Your haven\'t Placed any Orders Yet ',
+                      style: TextStyle(fontSize: 18),
+                    )
+                  ],
+                )));
               } else {
                 return ListView.builder(
                     itemCount: productList?.length,

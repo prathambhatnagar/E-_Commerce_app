@@ -30,7 +30,6 @@ class HomeScreen extends StatelessWidget {
             : 2;
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade400,
       appBar: AppBar(
         centerTitle: true,
         actions: [

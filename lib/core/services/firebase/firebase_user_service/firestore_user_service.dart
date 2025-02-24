@@ -288,4 +288,16 @@ class FirestoreUserService {
         .doc(user?.uid)
         .set({'cart': []}, SetOptions(merge: true));
   }
+
+  // Get admin creds
+  Future<Map<String, String>> getAdminCreds() async {
+    DocumentSnapshot credSnap = await FirebaseFirestore.instance
+        .collection('adminCreds')
+        .doc('creds')
+        .get();
+    return {
+      'userName': credSnap.get('userName'),
+      'password': credSnap.get('password')
+    };
+  }
 }
